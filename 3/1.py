@@ -11,23 +11,24 @@ y = f(x) площадь лежащая под кривой, между отре�
 """
 import math
 
+
 def finde_h(left, right, n):
     # return (right - left) / (2 * n)
     return (right - left) / n
+
 
 def func(x):
     y = x / (pow(x, 4) + 3 * pow(x, 2) + 2)
     return y
 
-def get_param():
-    a = input('Введите левую границу a :')
-    b = input('Введите правую границу b :')
-    n = input('Введите личество разбиений n :')
-    return a, b, n
-    # return 1, 3, 10
 
-# def sympson_cicle(h):
-#     I = h/3
+def get_param():
+    """Получаем данные от пользователя"""
+    a = int(input('Введите левую границу a :'))
+    b = int(input('Введите правую границу b :'))
+    n = int(input('Введите личество разбиений n :'))
+    return a, b, n
+
 
 def table_calculations(a, n, h):
     """Генерация таблицы с вычислениями Xi Yi"""
@@ -45,7 +46,9 @@ def table_calculations(a, n, h):
     show_table(values)
     return values, list(values[len(values)-1].values())[0]
 
+
 def show_table(values):
+    """Показывает расчитанные значения X и Y"""
     print('='*28)
     print('  i  |  X    |    Y')
     print('=' * 28)
