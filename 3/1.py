@@ -40,9 +40,6 @@ def table_calculations(a, n, h):
         result = round(result, 1)
         values.append({result: func(result)})
 
-    # print('values[len(values)] = ', values[len(values)-1])
-    # print('werew = ', list(values[len(values)-1].values())[0])
-
     show_table(values)
     return values, list(values[len(values)-1].values())[0]
 
@@ -92,7 +89,6 @@ def start():
     print('h = ', h)
     k_even, k_odd, Yn = get_k(a, b, n, h)
     Y0 = func(a)
-    # Yn =
 
     # I = h/3 * ( Y0 + Yn + 4 * (Y1+Y3...Yn-1) + 2 * (Y2+Y4...Yn-2) )
     result = h/3 * ( Y0 + Yn + 4 * k_odd + 2 * k_even)
@@ -103,30 +99,6 @@ def start():
 
 
 start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
