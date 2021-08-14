@@ -18,6 +18,7 @@ def finde_h(left, right, n):
 
 
 def func(x):
+    """Формула для расчета"""
     y = x / (pow(x, 4) + 3 * pow(x, 2) + 2)
     return y
 
