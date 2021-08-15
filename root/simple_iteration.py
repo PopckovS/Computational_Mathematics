@@ -20,7 +20,7 @@ def func(x):
     return (2 * math.cos(x)) / 7
 
 
-def check_e(result, step, E):
+def check_e(x_list, result, step, E):
     """Проверка рузультата на достижение точности E(кси)"""
     if abs(result - x_list[step]) < E:
         print('Точность перешла порог E (кси)')
@@ -43,83 +43,29 @@ def start():
     """
     Цикл вычислений и проверок
     """
+    x0, E, x_list, max_step = get_param()
+
     for step in range(max_step):
         current_x = x_list[step]
         result = func(current_x)
         show_step(step, current_x, result)
         x_list.append(result)
-        if len(x_list) > 1 and check_e(result=result, step=step, E=E):
+        if len(x_list) > 1 and check_e(x_list, result=result, step=step, E=E):
             break
     else:
         print('Метод простой итерации не сошелся')
 
 
-# Получаем данные от пользователя
-x0 = float(input('Введите X0 : '))
-E = float(input('Введите точночть E(кси): '))
-x_list = [x0]
-max_step = 100
-
-# Точка запуска программыы
-start()
-
+def get_param():
+    # Получаем данные от пользователя
+    x0 = float(input('Введите X0 : '))
+    E = float(input('Введите точность E(кси): '))
+    x_list = [x0]
+    max_step = 100
+    return x0, E, x_list, max_step
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Запуск программы
+if __name__ == "__main__":
+    start()
 

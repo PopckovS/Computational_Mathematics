@@ -45,4 +45,6 @@ def start():
     print(rungeKutta(x0, y, x, h))
     input()  
 
-start()
+# Запуск программы
+if __name__ == "__main__":
+    start()

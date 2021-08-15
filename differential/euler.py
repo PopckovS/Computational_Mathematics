@@ -58,8 +58,9 @@ def start():
 
     show_table(x_list, y_list)
 
-
-start()
+# Запуск программы
+if __name__ == "__main__":
+    start()
 
 
 

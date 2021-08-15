@@ -98,11 +98,6 @@ def start():
           format(h=h, Y0=Y0, Yn=Yn, k_odd=k_odd, k_even=k_even, result=result)
     )
 
-
-start()
-
-
-
-
-
-
+# Запуск программы
+if __name__ == "__main__":
+    start()
