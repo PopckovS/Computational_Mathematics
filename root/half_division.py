@@ -25,15 +25,7 @@ def get_parametr():
     return a, b, E
 
 
-def func(x):
-    """
-    Вычисляем значение функции, в качестве примера
-    2 cos x -7x = 0
-    """
-    return 2 * math.cos(x) - 7 * x
-
-
-def start():
+def half_division(function):
     """
     Старт программы
     """
@@ -45,9 +37,9 @@ def start():
 
         print('\n\nШаг №{counter}'.format(counter=counter))
 
-        fa = func(a)
+        fa = function(a)
         c = half_interval(a, b)
-        fc = func(c)
+        fc = function(c)
         if fa * fc >= 0:
             a = c
         else:
@@ -72,4 +64,4 @@ def start():
 
 # Запуск программы
 if __name__ == "__main__":
-    start()
+    half_division()

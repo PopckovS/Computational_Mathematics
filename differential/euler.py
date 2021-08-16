@@ -25,11 +25,6 @@ def get_param():
     return a, b, h, n
 
 
-def func(x, y):
-    """Вычисляем функцию"""
-    return pow(x, 2) - y / 2 * x
-
-
 def show_table(x_list: list, y_list: list):
     """Красивый вывод итоговых вычислений."""
     counter = 0
@@ -42,7 +37,7 @@ def show_table(x_list: list, y_list: list):
         counter += 1
 
 
-def start():
+def euler(function):
     """Старт программы"""
     a, b, h, n = get_param()
     counter = 0
@@ -54,15 +49,14 @@ def start():
         # Вычисляем новое значение для X
         x_list.append(round(a + counter * h, 1))
         # Вычисляем новое значение для Y
-        y_list.append(y_list[counter-1] + h * func(x_list[counter-1], y_list[counter-1]))
+        y_list.append(y_list[counter-1] + h * function(x_list[counter-1], y_list[counter-1]))
         counter += 1
 
     show_table(x_list, y_list)
 
 
-start()
-
-
+if __name__ == "__main__":
+    euler()
 
 
 

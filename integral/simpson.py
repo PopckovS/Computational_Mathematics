@@ -14,14 +14,7 @@ import math
 
 
 def finde_h(left, right, n):
-    # return (right - left) / (2 * n)
     return (right - left) / n
-
-
-def func(x):
-    """Формула для расчета"""
-    y = x / (pow(x, 4) + 3 * pow(x, 2) + 2)
-    return y
 
 
 def get_param():
@@ -32,7 +25,7 @@ def get_param():
     return a, b, n
 
 
-def table_calculations(a, n, h):
+def table_calculations(a, n, h, function):
     """Генерация таблицы с вычислениями Xi Yi"""
     values = []
     result = a - h
@@ -40,7 +33,7 @@ def table_calculations(a, n, h):
     for i in range(n+1):
         result = result + h
         result = round(result, 1)
-        values.append({result: func(result)})
+        values.append({result: function(result)})
 
     show_table(values)
     return values, list(values[len(values)-1].values())[0]
@@ -57,9 +50,9 @@ def show_table(values):
     print('=' * 28)
 
 
-def get_k(a, b, n, h):
+def get_k(a, b, n, h, function):
     """Метод получаем сумму (четных/не четных) вычислений функции y = f(x)"""
-    table_calcul, Yn = table_calculations(a, n, h)
+    table_calcul, Yn = table_calculations(a, n, h, function)
     list_even, list_odd = [], []
     k_even, k_odd = 0, 0
 
@@ -85,12 +78,12 @@ def get_k(a, b, n, h):
     return k_even, k_odd, Yn
 
 
-def start():
+def simpson(function):
     a, b, n = get_param()
     h = finde_h(a, b, n)
     print('h = ', h)
-    k_even, k_odd, Yn = get_k(a, b, n, h)
-    Y0 = func(a)
+    k_even, k_odd, Yn = get_k(a, b, n, h, function)
+    Y0 = function(a)
 
     # I = h/3 * ( Y0 + Yn + 4 * (Y1+Y3...Yn-1) + 2 * (Y2+Y4...Yn-2) )
     result = h/3 * ( Y0 + Yn + 4 * k_odd + 2 * k_even)
@@ -100,10 +93,5 @@ def start():
     )
 
 
-start()
-
-
-
-
-
-
+if __name__ == "__main__":
+    simpson()

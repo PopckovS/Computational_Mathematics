@@ -1,10 +1,3 @@
-import math
-
-
-def func(x):
-    """Формула для расчета"""
-    return math.pow(x,2)*math.pow(4-math.pow(x,2),-2)
-
 
 def work(f, a, b, n):
     print("\nТекущее число разбиений: ", n)
@@ -16,29 +9,34 @@ def work(f, a, b, n):
     return result
 
 
-def start():
+def left_rectangles(function):
     """Запуск программы"""
     print("Используем формулу левых прямоугольников")
-    print("Интегрируемая функция: f(x) = x^2*sqrt(4-x^2)")
 
     """Задаем отрезок интегрирования"""
     a = int(input("Введите a: "))
     b = int(input("Введите b: "))
+    h = float(input("Точность: "))
+    max_step = int(input("Количество максимальных шагов: "))
 
+    step = 0
     n = 2
-    a1 = work(func, a, b, n)
+    a1 = work(function, a, b, n)
     n *= 2
-    a2 = work(func, a, b, n)
+    a2 = work(function, a, b, n)
 
-    while abs(a1 - a2) > 0.001:
+    while abs(a1 - a2) > h:
         n *= 2
-        a1 = work(func, a, b, n)
+        a1 = work(function, a, b, n)
         n *= 2
-        a2 = work(func, a, b, n)
+        a2 = work(function, a, b, n)
+        step += 1
+        if step >= max_step:
+            print('Превышен лимит шагов')
+            break
 
     print("\nОтвет:", a2, "\nКоличество разбиений:", n)
-    input()
 
 
 if __name__ == '__main__':
-    start()
+    left_rectangles()
