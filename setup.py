@@ -1,12 +1,12 @@
 import setuptools
 
-with open("ComputMath/README.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="ComputMath",
 
-    version="1.0.0",
+    version="1.0.1",
 
     author="Popckov Sergio",
 
@@ -25,7 +25,7 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: Linux 18.04",
+        "Operating System :: Unix",
     ],
 
     python_requires='>=3.6',
